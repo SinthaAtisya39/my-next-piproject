@@ -5,12 +5,12 @@ import { revalidatePath } from "next/cache";
 
 export async function deleteMessageAction(id) {
   
-  const index = messages.findIndex((msg) => msg.id === id);
+  const index = messages.findIndex((m) => m.id === id);
   
   if (index !== -1) {
-    messages.splice(index, 1); 
-    return { success: true };
+    
+    messages.splice(index, 1);
+    
+    revalidatePath("/messages");
   }
-  
-  return { success: false, error: "Pesan tidak ditemukan" };
 }

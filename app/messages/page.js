@@ -1,23 +1,9 @@
 "use client";
 
-import { useMessage } from "@/context/MessageContext";
+import { messages } from "@/lib/db";
 import { deleteMessageAction } from "./action"; 
 
 export default function MessagesPage() {
-  const { messages, fetchMessages } = useMessage();
-  const handleDelete = async (id) => {
-    try {
-      const result = await deleteMessageAction(id);
-      
-      if (result.success) {
-        fetchMessages(); 
-      } else {
-        alert("Gagal menghapus pesan!");
-      }
-    } catch (error) {
-      console.error("Terjadi kesalahan:", error);
-    }
-  };
   return (
     <section className="mx-auto max-w-3xl px-6 py-20">
       <h1 className="text-3xl font-bold">Pesan Masuk</h1>
@@ -35,7 +21,7 @@ export default function MessagesPage() {
               
               <form action={deleteMessageAction.bind(null, msg.id)}>
                 <button 
-                  onClick={() => handleDelete(msg.id)}
+                  type="submit" 
                   className="rounded-md bg-red-500 px-3 py-1.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-red-600"
                 >
                   Hapus
