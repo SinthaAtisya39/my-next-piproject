@@ -3,7 +3,6 @@
 import { Mail, MapPin, MessageCircle } from "lucide-react";
 
 import { useUser } from "@/context/UserContext";
-import { useMessage } from "@/context/MessageContext";
 
 import { Button } from "@/Components/ui/button";
 import { Input } from "@/Components/ui/input";
@@ -27,7 +26,6 @@ export default function Contact() {
     setMessage,
     setSubmitted,
   } = useUser();
-  const { fetchMessages } = useMessage();
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -41,7 +39,6 @@ export default function Contact() {
   
     if (result.success) {
       setSubmitted(true);
-      fetchMessages();
     } else {
       alert(result.error);
     }

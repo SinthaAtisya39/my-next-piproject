@@ -14,8 +14,8 @@ const links = [
   { href: "/Services", label: "Services" },
   { href: "/Profile", label: "Profile" },
   { href: "/Users", label: "Users"},
-  { href: "/messages", label: "Messages"},
   { href: "/Contact", label: "Contact" },
+  { href: "/messages", label: "Messages"},
 ];
 
 export default function Navbar() {

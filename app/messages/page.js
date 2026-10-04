@@ -1,5 +1,3 @@
-"use client";
-
 import { messages } from "@/lib/db";
 import { deleteMessageAction } from "./action"; 
 
@@ -13,6 +11,7 @@ export default function MessagesPage() {
           <p className="text-muted-foreground">Belum ada pesan masuk.</p>
         ) : (
           messages.map((msg) => (
+        
             <div key={msg.id} className="flex items-start justify-between gap-4 rounded-lg border p-4">
               <div>
                 <p className="font-medium">{msg.name} — {msg.email}</p>
