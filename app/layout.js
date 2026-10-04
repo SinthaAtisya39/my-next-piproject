@@ -6,6 +6,7 @@ import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
 import { UserProvider } from "@/context/UserContext";
 import { FavoriteProvider } from "@/context/FavoriteContext"; 
+import { MessageProvider } from "@/context/MessageContext";
 
 const fontSans = localFont({
   src: [
@@ -37,6 +38,7 @@ export default function RootLayout({ children }) {
       <body className="flex min-h-screen flex-col bg-background text-foreground antialiased">
         <UserProvider>
           <FavoriteProvider>
+            <MessageProvider>
             <Navbar />
 
             <main className="flex-1">
@@ -44,6 +46,7 @@ export default function RootLayout({ children }) {
             </main>
 
             <Footer />
+            </MessageProvider>
           </FavoriteProvider>
         </UserProvider>
       </body>

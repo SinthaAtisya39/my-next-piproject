@@ -3,10 +3,12 @@
 import { Mail, MapPin, MessageCircle } from "lucide-react";
 
 import { useUser } from "@/context/UserContext";
+import { useMessage } from "@/context/MessageContext";
 
 import { Button } from "@/Components/ui/button";
 import { Input } from "@/Components/ui/input";
 import { Card, CardContent } from "@/Components/ui/card";
+import { submitContactForm } from "./action"
 
 const contactInfo = [
   { icon: Mail, label: "Email", value: "hello@mywebsite.com" },
@@ -25,17 +27,24 @@ export default function Contact() {
     setMessage,
     setSubmitted,
   } = useUser();
+  const { fetchMessages } = useMessage();
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-
-    console.log({
-      name,
-      email,
-      message,
-    });
-
-    setSubmitted(true);
+  
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("message", message);
+  
+    const result = await submitContactForm(formData);
+  
+    if (result.success) {
+      setSubmitted(true);
+      fetchMessages();
+    } else {
+      alert(result.error);
+    }
   }
 
   return (
@@ -61,7 +70,7 @@ export default function Contact() {
             {contactInfo.map(({ icon: Icon, label, value }) => (
               <Card
                 key={label}
-                className="border border-white/10 bg-foreground/[0.03]"
+                className="border border-white/10 bg-foreground/3"
               >
                 <CardContent className="flex items-center gap-4">
                   <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
@@ -82,7 +91,7 @@ export default function Contact() {
             ))}
           </div>
 
-          <Card className="border border-white/10 bg-foreground/[0.03] md:col-span-3">
+          <Card className="border border-white/10 bg-foreground/3 md:col-span-3">
             <CardContent>
               {submitted ? (
                 <div className="flex h-full min-h-64 flex-col items-center justify-center text-center">
@@ -91,7 +100,7 @@ export default function Contact() {
                   </p>
 
                   <p className="mt-2 text-sm text-muted-foreground">
-                    Thanks for reaching out — we&apos;ll reply soon.
+                    Thanks for reaching out — we'll reply soon.
                   </p>
                 </div>
               ) : (

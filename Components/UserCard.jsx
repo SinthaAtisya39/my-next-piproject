@@ -1,26 +1,28 @@
 "use client";
-import Link from "next/link";
-import { Button } from "@/Components/ui/button";
+
+import { Heart } from "lucide-react";
+
+import { Button, buttonVariants } from "@/components/ui/button";
+import { useFavorite } from "@/context/FavoriteContext";
+import { cn } from "@/lib/utils";
 
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@/Components/ui/card";
-import { useFavorite } from "@/context/FavoriteContext";
+} from "@/components/ui/card";
 
 export default function UserCard({ user }) {
-  const { toggleFavorite, isFavorite } = useFavorite();
-  const fav = isFavorite(user.id);
+  const { isFavorite, addFavorite, removeFavorite } = useFavorite();
+  const favorited = isFavorite(user.id);
+
   const initials = user.name
-    ? user.name
-        .split(" ")
-        .map((part) => part[0])
-        .slice(0, 2)
-        .join("")
-        .toUpperCase()
-    : "";
+    .split(" ")
+    .map((part) => part[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
 
   return (
     <Card className="group border border-white/10 bg-foreground/3 transition-all hover:-translate-y-1 hover:border-foreground/20 hover:shadow-xl hover:shadow-black/20">
@@ -40,17 +42,26 @@ export default function UserCard({ user }) {
           {user.company.name}
         </p>
 
-        <div className="mt-4 flex items-center gap-2">
-          <Button asChild variant="default" className="flex-1 rounded-full text-xs">
-            <Link href={`/Users/${user.id}`}>View Profile</Link>
-          </Button>
+        <div className="mt-4 flex gap-2">
+          <a
+            href={`https://jsonplaceholder.typicode.com/users/${user.id}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn(buttonVariants(), "flex-1 rounded-full")}
+          >
+            View Profile
+          </a>
 
           <Button
-            onClick={() => toggleFavorite(user)}
-            variant={fav ? "default" : "outline"}
-            className="rounded-full text-xs"
+            variant={favorited ? "secondary" : "outline"}
+            className="rounded-full"
+            aria-pressed={favorited}
+            onClick={() =>
+              favorited ? removeFavorite(user.id) : addFavorite(user)
+            }
           >
-            {fav ? "♥ Favorite" : "♡ Add Favorite"}
+            <Heart className={favorited ? "fill-red-500 text-red-500" : ""} />
+            {favorited ? "Favourite" : "Add Favourite"}
           </Button>
         </div>
       </CardContent>
