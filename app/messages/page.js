@@ -19,7 +19,7 @@ export default function MessagesPage() {
               </div>
               
               <form action={deleteMessageAction.bind(null, msg.id)}>
-                <button 
+                <button id={msg.id}
                   type="submit" 
                   className="rounded-md bg-red-500 px-3 py-1.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-red-600"
                 >
