@@ -11,11 +11,11 @@ import { MessageProvider } from "@/context/MessageContext";
 const fontSans = localFont({
   src: [
     {
-      path: "./fonts/PlusJakartaSans-Variable.woff2",
+      path: "./Fonts/PlusJakartaSans-Variable.woff2",
       style: "normal",
     },
     {
-      path: "./fonts/PlusJakartaSans-Italic-Variable.woff2",
+      path: "./Fonts/PlusJakartaSans-Italic-Variable.woff2",
       style: "italic",
     },
   ],

@@ -1,6 +1,6 @@
 import { Globe, Mail, MessageCircle } from "lucide-react";
 
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/Components/ui/card";
 
 const stats = [
   { value: "20+", label: "Projects" },
