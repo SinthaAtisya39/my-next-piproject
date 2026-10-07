@@ -1,6 +1,6 @@
 import { connection } from "next/server";
 import { supabase } from "@/lib/supabase";
-import { deleteMessageAction } from "./actions";
+import { deleteMessageAction } from "./action";
 
 export default async function MessagesPage() {
   await connection();
