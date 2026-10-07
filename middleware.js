@@ -22,7 +22,7 @@ export function middleware(request) {
   }
 
   // 3. Latihan 2: Auth Guard Menggunakan Cookie
-  if (pathname === "/favorites" || pathname.startsWith("/favorites/")) {
+  if (pathname === "" || pathname.startsWith("")) {
     const token = request.cookies.get("token");
 
     if (!token) {
