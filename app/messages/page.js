@@ -37,7 +37,7 @@ export default async function MessagesPage() {
                 <input type="hidden" name="id" value={msg.id} />
                 <button
                   type="submit"
-                  className="rounded-md border border-red-300 px-3 py-1 text-sm text-red-600 hover:bg-red-50"
+                  className="rounded-md bg-red-500 px-3 py-1.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-red-600 whitespace-nowrap"
                 >
                   Hapus
                 </button>
