@@ -1,16 +1,24 @@
 "use server"; 
 
-import { messages } from "@/lib/db";
+import { supabase } from "@/lib/supabase";
 import { revalidatePath } from "next/cache";
 
-export async function deleteMessageAction(id) {
+export async function deleteMessageAction(formData) {
     try {
-        const index = messages.findIndex((msg) => msg.id === id);
+        
+        const id = formData.get("id");
   
-        if (index !== -1) {
-            messages.splice(index, 1);
-            revalidatePath("/messages");
+        const { error } = await supabase
+            .from("messages")
+            .delete()
+            .eq("id", id);
+
+        if (error) {
+            console.error("Gagal menghapus di Supabase:", error.message);
+            return;
         }
+
+        revalidatePath("/messages");
     } catch (error) {
         console.error("Gagal menghapus:", error);
     }
