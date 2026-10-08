@@ -2,7 +2,7 @@
 
 import { Heart } from "lucide-react";
 
-import { Button, buttonVariants } from "@/Components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { useFavorite } from "@/context/FavoriteContext";
 import { cn } from "@/lib/utils";
 
@@ -11,7 +11,7 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from "@/Components/ui/card";
+} from "@/components/ui/card";
 
 export default function UserCard({ user }) {
   const { isFavorite, addFavorite, removeFavorite } = useFavorite();

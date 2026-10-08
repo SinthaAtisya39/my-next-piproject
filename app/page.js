@@ -2,13 +2,13 @@ import Link from "next/link";
 import { ArrowRight, Code2, Palette, Sparkles, Users2 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/Components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@/Components/ui/card";
+} from "@/components/ui/card";
 
 const features = [
   {

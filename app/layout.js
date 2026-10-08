@@ -2,8 +2,8 @@ import "./globals.css";
 
 import localFont from "next/font/local";
 
-import Navbar from "@/Components/Navbar";
-import Footer from "@/Components/Footer";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import { UserProvider } from "@/context/UserContext";
 import { FavoriteProvider } from "@/context/FavoriteContext"; 
 import { AuthProvider } from "@/context/AuthContext";

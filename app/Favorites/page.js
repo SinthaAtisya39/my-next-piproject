@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Heart } from "lucide-react";
 
-import UserCard from "@/Components/UserCard";
+import UserCard from "@/components/UserCard";
 import { useFavorite } from "@/context/FavoriteContext";
 
 export default function FavoritesPage() {

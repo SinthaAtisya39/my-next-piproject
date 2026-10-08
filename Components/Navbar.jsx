@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/Components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { useAuth } from "@/context/AuthContext"; // ← baru
 import { useFavorite } from "@/context/FavoriteContext";
 

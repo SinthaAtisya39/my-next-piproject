@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import { SearchX } from "lucide-react";
 
-import UserCard from "@/Components/UserCard";
-import { Input } from "@/Components/ui/input";
+import UserCard from "@/components/UserCard";
+import { Input } from "@/components/ui/input";
 
 export default function UsersPage() {
   const [users, setUsers] = useState([]);
